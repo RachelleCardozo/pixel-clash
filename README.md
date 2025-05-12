@@ -48,7 +48,7 @@ This application was developed as part of the AE2 assessment for the Contemporar
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/pixel-clash.git
+   git clone https://github.com/RachelleCardozo/pixel-clash.git
 
 2. **Install dependencies**:
 npm install
