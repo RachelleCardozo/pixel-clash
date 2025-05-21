@@ -25,7 +25,7 @@ export default function Navbar() {
         const fullName = userData?.name || "User";
         const firstName = fullName.split(" ")[0];
         setUserName(firstName);
-        setUserRole(userData?.role || "user"); // 🔥 Save user role too
+        setUserRole(userData?.role || "user"); // Save user role too
       } else {
         setIsLoggedIn(false);
         setUserName(null);

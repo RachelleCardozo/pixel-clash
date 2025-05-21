@@ -36,7 +36,7 @@ export default function EventDetailPage() {
         const userData = userDoc.data();
         setUserRole(userData?.role || "user");
 
-        // 🔥 Check if the user has already registered
+        // Check if the user has already registered
         const bookingsRef = collection(db, "bookings");
         const existingBookingQuery = query(
           bookingsRef,
@@ -66,7 +66,7 @@ export default function EventDetailPage() {
     }
 
     try {
-      // 🔥 Check again before adding booking
+      // Check again before adding booking
       const bookingsRef = collection(db, "bookings");
       const existingBookingQuery = query(
         bookingsRef,
@@ -79,21 +79,19 @@ export default function EventDetailPage() {
         alert("You have already registered for this tournament!");
         return;
       }
-
-      // 🔥 Add booking
+      // Add booking
       await addDoc(bookingsRef, {
         userId: user.uid,
         tournamentId: id,
         tournamentName: tournament.title,
         createdAt: new Date(),
       });
-
-      // 🔥 Update available spots
+      // Update available spots
       const tournamentRef = doc(db, "tournaments", id);
       await updateDoc(tournamentRef, {
         availableSpots: tournament.availableSpots - 1,
       });
-
+      
       alert("Registration successful!");
       router.push("/dashboard/user");
     } catch (error: any) {
@@ -111,7 +109,7 @@ export default function EventDetailPage() {
       <p className="mb-2">Date: {new Date(tournament.date).toLocaleDateString()}</p>
       <p className="mb-6">Available Spots: {tournament.availableSpots}</p>
 
-      {/* 🔥 Back Button */}
+      {/* Back Button */}
       <button
         onClick={() => router.back()}
         className="mb-6 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
@@ -119,7 +117,7 @@ export default function EventDetailPage() {
         ← Back
       </button>
 
-      {/* 🔥 Conditional Rendering based on role and registration */}
+      {/*  Conditional Rendering based on role and registration */}
       {userRole === "user" && !hasRegistered && tournament.availableSpots > 0 && (
         <button
           onClick={handleRegister}

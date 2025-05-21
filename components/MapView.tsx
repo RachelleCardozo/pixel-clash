@@ -34,8 +34,8 @@ export default function MapView({ tournaments }: { tournaments: any[] }) {
           const key = `${lat}_${lng}`;
 
           if (addedMarkers.has(key)) {
-            lat = lat + (Math.random() * 0.0002 - 0.0001);
-            lng = lng + (Math.random() * 0.0002 - 0.0001);
+            lat = lat + (Math.random() * 0.0002 - 0.0001); // To add offset to marker
+            lng = lng + (Math.random() * 0.0002 - 0.0001); // To add offset to marker
           }
 
           addedMarkers.add(`${lat}_${lng}`);
